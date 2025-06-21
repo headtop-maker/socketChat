@@ -20,11 +20,11 @@ export class MyGateway implements OnModuleInit {
   }
 
   @SubscribeMessage('newMessage')
-  onNewMessage(@MessageBody() body: string) {
+  onNewMessage(@MessageBody() body: any) {
     console.log(body);
     this.server.emit('onMessage', {
       msg: 'New Message',
-      content: String(body),
+      content: body,
     });
   }
 }
